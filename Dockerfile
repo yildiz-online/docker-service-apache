@@ -13,9 +13,9 @@ RUN apt-get update
 RUN apt-get install python-certbot-apache -y -q
 COPY script.sh /
 RUN chmod 777 script.sh
-
+RUN a2enmod headers
 RUN service apache2 start
-
+RUN ./script.sh
 
 EXPOSE 80
 EXPOSE 443
