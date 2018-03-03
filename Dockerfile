@@ -13,9 +13,10 @@ RUN apt-get update
 RUN apt-get install python-certbot-apache -y -q
 COPY script.sh /
 RUN chmod 777 script.sh
+RUN ./script.sh
 
 EXPOSE 80
 EXPOSE 443
 
-ENTRYPOINT ./script.sh
+VOLUME ["/etc/letsencrypt", "/var/www/html/", "/etc/apache2"]
 
