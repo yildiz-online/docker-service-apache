@@ -14,6 +14,7 @@ RUN apt-get install python-certbot-apache -y -q
 COPY script.sh /
 RUN chmod 777 script.sh
 RUN a2enmod headers
+RUN a2enmod ssl
 RUN service apache2 start
 RUN ./script.sh
 
