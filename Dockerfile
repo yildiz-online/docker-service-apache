@@ -15,11 +15,11 @@ COPY script.sh /
 RUN chmod 777 script.sh
 RUN a2enmod headers
 RUN a2enmod ssl
-RUN service apache2 start
-RUN ./script.sh
 
 EXPOSE 80
 EXPOSE 443
 
 VOLUME ["/etc/letsencrypt", "/var/www/html/", "/etc/apache2"]
+
+ENTRYPOINT ./script.sh
 
