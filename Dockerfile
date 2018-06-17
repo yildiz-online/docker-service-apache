@@ -1,6 +1,6 @@
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 
-LABEL maintainer="GrÃ©gory Van den Borre vandenborre.gregory@hotmail.fr"
+LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
 ENV EMAIL ""
 ENV DOMAIN ""
