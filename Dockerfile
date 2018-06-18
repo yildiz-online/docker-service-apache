@@ -6,7 +6,11 @@ ENV EMAIL ""
 ENV DOMAIN ""
 ENV ARGUMENT ""
 
-RUN echo "Europe/Brussels" > /etc/timezone
+ENV TZ=Europe/Brussels
+
+RUN apt-get install tzdata -y
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
 RUN apt-get install -y -q apache2 software-properties-common
 RUN add-apt-repository ppa:certbot/certbot
