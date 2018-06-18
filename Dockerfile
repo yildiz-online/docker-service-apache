@@ -8,7 +8,7 @@ ENV ARGUMENT ""
 
 ENV TZ=Europe/Brussels
 
-RUN apt-get install tzdata -y
+RUN apt-get install -y tzdata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
