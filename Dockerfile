@@ -19,6 +19,7 @@ RUN apt-get install apache2 python-certbot-apache -y -q
 COPY script.sh /
 RUN chmod 777 script.sh
 RUN a2enmod headers
+RUN a2enmod rewrite
 RUN a2enmod ssl
 
 EXPOSE 80
