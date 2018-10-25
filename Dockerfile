@@ -21,6 +21,7 @@ RUN chmod 777 script.sh
 RUN a2enmod headers
 RUN a2enmod rewrite
 RUN a2enmod ssl
+RUN a2enmod proxy_http
 
 EXPOSE 80
 EXPOSE 443
