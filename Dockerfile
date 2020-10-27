@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
@@ -17,7 +17,7 @@ RUN add-apt-repository ppa:certbot/certbot
 RUN apt-get update
 RUN apt-get install apache2 python-certbot-apache -y -q
 COPY script.sh /
-RUN chmod 777 script.sh
+RUN chmod +x script.sh
 RUN a2enmod headers
 RUN a2enmod rewrite
 RUN a2enmod ssl
