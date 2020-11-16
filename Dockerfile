@@ -14,7 +14,7 @@ RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && ap
 RUN apt-get install -y -q software-properties-common curl
 RUN add-apt-repository ppa:ondrej/apache2
 RUN apt-get update
-RUN apt-get install apache2 python-certbot-apache -y -q
+RUN apt-get install apache2 python3-certbot-apache -y -q
 COPY script.sh /
 RUN chmod +x script.sh
 RUN a2enmod headers
