@@ -10,11 +10,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t moussavdb/service-apache:latest -t moussavdb/service-apache:build_$TRAVIS_BUILD_NUMBER .
+  - docker build -t moussavdb/service-apache-$TRAVIS_CPU_ARCH:latest -t moussavdb/service-apache-$TRAVIS_CPU_ARCH:build_$TRAVIS_BUILD_NUMBER .
 script:
-  - docker images moussavdb/service-apache
+  - docker images moussavdb/service-apache-$TRAVIS_CPU_ARCH
   
 after_success:
   - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
-    docker push moussavdb/service-apache:latest;
-    docker push moussavdb/service-apache:build_$TRAVIS_BUILD_NUMBER;
+    docker push moussavdb/service-apache-$TRAVIS_CPU_ARCH:latest;
+    docker push moussavdb/service-apache-$TRAVIS_CPU_ARCH:build_$TRAVIS_BUILD_NUMBER;
