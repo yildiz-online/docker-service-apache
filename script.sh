@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Starting apache web server" 
 service apache2 start
 
