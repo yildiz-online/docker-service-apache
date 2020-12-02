@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "Starting apache web server" 
+rm -f /var/run/apache2/apache2.pid
 service apache2 start
 
 if [ ! /etc/letsencrypt/live ]; then
