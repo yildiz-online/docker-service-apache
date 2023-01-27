@@ -2,7 +2,7 @@ arch:
   - amd64
   - arm64
 os: linux
-dist: jammy
+dist: focal
 
 language: generic
 
