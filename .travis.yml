@@ -14,4 +14,6 @@ before_install:
   - chmod a+x ~/.docker/cli-plugins/docker-buildx
   
 script:
+  - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
+  - docker buildx create --use
   - docker buildx build --push --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --tag moussavdb/service-apache:latest .
