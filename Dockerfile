@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM ubuntu:kinetic
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
