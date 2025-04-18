@@ -1,5 +1,5 @@
 arch:
-  - amd64
+  - arm64
 os: linux
 dist: jammy
 
@@ -10,7 +10,7 @@ services:
 
 before_install:
   - mkdir -vp ~/.docker/cli-plugins/
-  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.21.2/buildx-v0.21.2.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.23.0/buildx-v0.23.0.linux-arm64" > ~/.docker/cli-plugins/docker-buildx
   - chmod a+x ~/.docker/cli-plugins/docker-buildx
   
 script:
