@@ -1,4 +1,4 @@
-FROM httpd:2.4.63
+FROM ubuntu:noble
 
 LABEL maintainer="Grégory Van den Borre vandenborre.gregory@hotmail.fr"
 
@@ -10,17 +10,18 @@ ENV TZ=Europe/Brussels
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY script.sh /script.sh
-RUN chmod +x /script.sh
-
+RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
+RUN apt-get install -y -q software-properties-common curl
+RUN add-apt-repository ppa:ondrej/apache2
+RUN apt-get update
+RUN apt-get install apache2 openssl certbot python3-certbot-apache -y -q
+COPY script.sh /
+RUN chmod +x script.sh
 RUN a2enmod headers
 RUN a2enmod rewrite
 RUN a2enmod ssl
 RUN a2enmod proxy_http
 RUN a2enmod http2
-
-RUN apt-get update
-RUN apt-get install certbot python3-certbot-apache -y -q
 
 EXPOSE 80
 EXPOSE 443
