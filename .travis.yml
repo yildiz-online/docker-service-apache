@@ -1,6 +1,6 @@
 arch: arm64
 os: linux
-dist: jammy
+dist: focal
 
 language: bash
 
