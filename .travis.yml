@@ -1,8 +1,8 @@
 arch: arm64
 os: linux
-dist: focal
+dist: jammy
 
-language: bash
+language: generic
 
 services:
   - docker
