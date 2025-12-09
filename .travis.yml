@@ -1,5 +1,4 @@
-arch:
-  - arm64
+arch: arm64
 os: linux
 dist: jammy
 
@@ -9,6 +8,7 @@ services:
   - docker
 
 before_install:
+  - sleep 5
   - mkdir -vp ~/.docker/cli-plugins/
   - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.30.1/buildx-v0.30.1.linux-arm64" > ~/.docker/cli-plugins/docker-buildx
   - chmod a+x ~/.docker/cli-plugins/docker-buildx
@@ -17,3 +17,4 @@ script:
   - docker login -u="moussavdb" --password-stdin <<< "$DOCKER_PASSWORD";
   - docker buildx create --use
   - docker buildx build --push --platform linux/arm64/v8 --tag moussavdb/service-apache:build_$TRAVIS_BUILD_NUMBER .
+  - sleep 5
