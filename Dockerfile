@@ -11,14 +11,17 @@ ENV TZ=Europe/Brussels
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
-RUN apt-get install -y -q software-properties-common curl apache2 openssl certbot python3-certbot-apache
+RUN apt-get install -y -q software-properties-common curl apache2 openssl certbot python3-certbot-apache libapache2-mod-proxy-wstunnel
+
 COPY script.sh /
 RUN chmod +x script.sh
+
 RUN a2enmod headers
 RUN a2enmod rewrite
 RUN a2enmod ssl
 RUN a2enmod proxy_http
 RUN a2enmod http2
+RUN a2enmod proxy_wstunnel
 
 EXPOSE 80
 EXPOSE 443
